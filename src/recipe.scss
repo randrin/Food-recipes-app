@@ -1,0 +1,26 @@
+@import '../public/assets/scss/variables';
+
+body {
+  font-family: 'Open sans', sans-serif !important;
+  background-color: $recipe-color-white-gray !important;
+}
+
+.recipe-slanted {
+  font-family: 'Courgette', cursive;
+}
+
+.recipe-letter {
+  letter-spacing: $recipe-letter-spacing;
+}
+
+.recipe-text-red {
+  color: $recipe-color-red;
+}
+
+.recipe-text-gray {
+  color: $recipe-color-gray;
+}
+
+.recipe-text-black {
+  color: $recipe-color-black;
+}
