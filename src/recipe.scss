@@ -1,5 +1,7 @@
 @import '../public/assets/scss/variables';
 
+@import '../public/assets/scss/uiKit';
+
 body {
   font-family: 'Open sans', sans-serif !important;
   background-color: $recipe-color-white-gray !important;
@@ -23,4 +25,8 @@ body {
 
 .recipe-text-black {
   color: $recipe-color-black;
+}
+
+.recipe-text-white {
+  color: $recipe-color-white;
 }

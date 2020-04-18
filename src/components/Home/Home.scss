@@ -1,0 +1,11 @@
+@import '../../../public/assets/scss/variables';
+
+.recipe-header,
+.recipe-header-default {
+    background: url('../../assets/images/homeBcg.jpeg') center/cover no-repeat;
+    min-height: calc(100vh - 66px);
+}
+
+.recipe-header-default {
+    background: url('../../assets/images/defaultBcg.jpeg') center/cover no-repeat;
+}
