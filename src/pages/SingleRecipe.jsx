@@ -27,7 +27,7 @@ export default class SingleRecipe extends Component {
       console.log("responseJson: ", responseJson);
     } catch (error) {
       this.state.loading = false;
-      console.log("responseJson: ", error);
+      console.log("SingleRecipe: ", error);
     }
   }
 

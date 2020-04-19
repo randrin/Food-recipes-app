@@ -9,7 +9,35 @@ export default class Recipes extends Component {
     this.state = {
       recipes: recipeData,
       search: "",
+      url: `www.food2fork.com/api/search?key=6e326558f61a419968fca8c6efe0be18`,
+      base_url: `www.food2fork.com/api/search?key=6e326558f61a419968fca8c6efe0be18`,
+      query: "&q=",
+      error: "",
     };
+    this.getRecipes = this.getRecipes.bind(this);
+  }
+
+  async getRecipes() {
+    try {
+      const recipes = await fetch(this.state.url);
+      const recipesJson = await recipes.json();
+      if (recipesJson.recipes.length === 0) {
+        this.setState({
+          error: "Your search don't retrieve any recipes. Try again !!!",
+        });
+      } else {
+        this.setState({
+          recipes: recipesJson.recipes,
+          error: "",
+        });
+      }
+    } catch (error) {
+      console.log("Recipes - getRecipes Error: ", error);
+    }
+  }
+
+  componentDidMount() {
+    this.getRecipes();
   }
 
   handleChange = (e) => {
@@ -20,6 +48,14 @@ export default class Recipes extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    const { base_url, query, search } = this.state;
+    this.setState(
+      {
+        url: `${base_url}${query}${search}`,
+        search: "",
+      },
+      () => this.getRecipes()
+    );
   };
 
   render() {
@@ -30,7 +66,19 @@ export default class Recipes extends Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
-        <RecipesList recipes={this.state.recipes} />
+        {this.state.error ? (
+          <div className="container">
+            <div className="row">
+              <div className="col-10 col-md-8 mx-auto mt-5 text-center mt-5">
+                <h1 className="text-capitalize recipe-text-gray recipe-slanted">
+                  {this.state.error}
+                </h1>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <RecipesList recipes={this.state.recipes} />
+        )}
       </>
     );
   }
