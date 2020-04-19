@@ -6,11 +6,31 @@ import "../recipe.scss";
 export default class SingleRecipe extends Component {
   constructor(props) {
     super(props);
+    const id = this.props.match.params.id;
     this.state = {
-      recipe: recipeData,
-      loading: true,
+      //recipe: recipeData,
+      recipe: [],
+      id,
+      loading: false,
     };
   }
+
+  async componentDidMount() {
+    const url = `https://www.food2fork.com/api/get?key=${process.env.API_KEY}&rId=${this.state.id}`;
+    try {
+      const response = await fetch(url);
+      const responseJson = await response.json();
+      this.setState({
+        recipe: responseJson.recipe,
+      });
+      this.state.loading = true;
+      console.log("responseJson: ", responseJson);
+    } catch (error) {
+      this.state.loading = false;
+      console.log("responseJson: ", error);
+    }
+  }
+
   render() {
     const {
       image_url,
@@ -63,6 +83,25 @@ export default class SingleRecipe extends Component {
                   );
                 })}
               </ul>
+            </div>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="container my-5">
+          <div className="row">
+            <div className="col-10 mx-auto col-md-8 my-3 text-center">
+              <i className="fa fa-frown-o my-5 recipe-text-red recipe-single-icon"></i>
+              <h2 className="text-capitalize recipe-slanted">
+                There are some problem retrieve the recipe.
+              </h2>
+              <Link
+                to="/recipes"
+                className="btn btn-warning btn-lg text-uppercase mt-3"
+              >
+                <i className="fa fa-chevron-left"></i> Back to Recipes
+              </Link>
             </div>
           </div>
         </div>

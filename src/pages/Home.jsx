@@ -14,7 +14,7 @@ export default class Home extends Component {
             to="/recipes"
             className="btn btn-secondary btn-lg text-uppercase mt-3"
           >
-            Search Recipes
+            Search Recipes <i className="fa fa-chevron-right"></i>
           </Link>
         </Header>
       </>

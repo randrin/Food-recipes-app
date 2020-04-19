@@ -11,7 +11,7 @@ export default class Error404 extends Component {
             Oufff! The page that you try to find isn't available. Try again ...
           </h2>
           <Link to="/" className="btn btn-primary btn-lg text-uppercase mt-3">
-            Go to Home
+            <i className="fa fa-chevron-left"></i> Go to Home
           </Link>
         </Header>
       </div>

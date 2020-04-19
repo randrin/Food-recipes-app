@@ -9,6 +9,9 @@
 # testing
 /coverage
 
+# configuration API
+.env.development
+
 # production
 /build
 

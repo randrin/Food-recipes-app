@@ -11,7 +11,6 @@ export default class Recipe extends Component {
       title,
       recipe_id,
     } = this.props.recipe;
-    console.log(this.props);
     return (
       <div className="col-10 mx-auto col-md-6 col-lg-4">
         <div className="card" style={{ width: "18rem" }}>
