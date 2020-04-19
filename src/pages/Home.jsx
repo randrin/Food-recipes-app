@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default class Home extends Component {
   render() {
     return (
-      <div>
+      <>
         <Header title="Foods Recipes">
           <h2 className="text-center text-white">
             All about our recipes foods, Let's go ...
@@ -17,7 +17,7 @@ export default class Home extends Component {
             Search Recipes
           </Link>
         </Header>
-      </div>
+      </>
     );
   }
 }
